@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: busybox-daemon
+spec:
+  selector:
+    matchLabels:
+      app: busybox
+  template:
+    metadata:
+      labels:
+        app: busybox
+    spec:
+      containers:
+      - name: busybox
+        image: harbor-test.com/library/busybox:1.0.0
+        command: ["ash"]
+        args: ["-c", "sleep 3600"]
