@@ -1,3 +1,16 @@
+
+# Introduction
+This guide provides a comprehensive guide for installing and configuring Harbor on ec2 instances, with a focus on using self-signed certificates. 
+Harbor is an open-source container image registry that secures images with role-based access control, scans images for vulnerabilities, and signs images as trusted. 
+Bottlerocket Linux-based operating system designed for hosting containers.
+
+By following this guide, you will be able to:
+
+- Install Harbor on Bottlerocket.
+- Configure Harbor with self-signed SSL certificates.
+- Push and pull container images to and from Harbor.
+- Manage certificates in a Kubernetes cluster using both automated and manual methods.
+
 # Install Harbor
 
 1. **Download the Version You Need**
