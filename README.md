@@ -137,4 +137,5 @@ Enter your desired domain name: harbor-test.com
 
 ---
 
+
 This guide provides detailed steps to install and configure Harbor, push and pull images, and manage certificates both automatically using Kubernetes and manually. Adjust the commands and paths as needed for your specific environment.
