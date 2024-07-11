@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: regain-access
+spec:
+  selector:
+    matchLabels:
+      app: regain-access  # Label to identify Pods belonging to this DaemonSet
+  template:
+    metadata:
+      labels:
+        app: regain-access  # Matches the selector label
+    spec:
+      containers:
+      - name: regain-access
+        image: fedora
+        command: ["sleep", "infinity"]  # Keeps container running
+        volumeMounts:
+        - mountPath: /usr/bin/apiclient
+          name: apiclient
+          readOnly: true
+        - mountPath: /run/api.sock
+          name: apiserver-socket
+        securityContext:
+          seLinuxOptions:
+            level: s0
+            role: system_r
+            type: control_t
+            user: system_u
+      volumes:
+        - name: apiclient
+          hostPath:
+            path: /usr/bin/apiclient
+            type: File
+        - name: apiserver-socket
+          hostPath:
+            path: /run/api.sock
+            type: Socket
