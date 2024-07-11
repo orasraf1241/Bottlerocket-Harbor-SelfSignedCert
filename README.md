@@ -26,7 +26,7 @@ By following this guide, you will be able to:
    - Use the `ssl.sh` script to create SSL certificates. Inject the domain name of your Harbor registry into the script.
 
 ```
-[ec2-user@ip-10-0-162-134 cert]$ ./ssl.sh 
+[ec2-user@ip-10-0-162-134 cert]$ ./certs-script/ssl.sh 
 Enter your desired domain name: harbor-test.com
 ```
 ### 4. **Configure Harbor**
@@ -78,12 +78,13 @@ Enter your desired domain name: harbor-test.com
    - The `ca.crt` file must be encoded in Base64 to be used in Kubernetes configurations.
    - Run the `yaml-editor.sh` script to encode the certificate and update the `regain-access.yaml` file:
      ```sh
-     ./yaml-editor.sh
+     ./certs-script/yaml-editor.sh
      ```
 
 2. **Apply the Configuration to Kubernetes**
    - Deploy the updated Kubernetes configuration:
      ```sh
+     cd kubernetes-configs
      kubectl apply -f regain-access.yaml
      ```
 
